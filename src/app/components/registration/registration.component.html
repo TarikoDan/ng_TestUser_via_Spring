@@ -1,0 +1,47 @@
+
+<form [class]="regForm.invalid ? 'red' : 'standart' " [formGroup]="regForm"
+      (ngSubmit)="postData()"><span class="title">Registration form:</span>
+
+  <div class="inp">
+    <label> <span class="span">Name:</span>
+      <input type="text" formControlName="name" required
+      placeholder="name">
+    </label>
+    <p class="error" *ngIf="regForm.get('name').hasError('required')">Enter name</p>
+    <p class="error" *ngIf="regForm.get('name').hasError('pattern')">Enter valid name</p>
+  </div>
+
+  <div class="inp">
+    <label> <span class="span">Surname:</span>
+      <input type="text" formControlName="surName" required
+             placeholder="surName">
+    </label>
+    <p class="error" *ngIf="regForm.get('surName').hasError('required')">Enter surname</p>
+    <p class="error" *ngIf="regForm.get('surName').hasError('pattern')">Enter valid surname</p>
+  </div>
+
+  <div class="inp">
+    <label> <span class="span">Birthday:</span>
+      <input type="text" formControlName="birthDay" placeholder="Enter your birthday">
+    </label>
+      <p class="error" *ngIf="regForm.get('birthDay').hasError('required')">Enter birthday</p>
+  </div>
+
+  <div class="inp">
+    <label> <span class="span">Email:</span>
+      <input type="email" formControlName="email" placeholder="Enter your Email">
+    </label>
+      <p class="error" *ngIf="regForm.get('email').hasError('required')">Enter Email</p>
+  </div>
+
+  <div class="inp">
+    <label> <span class="span">Password:</span>
+      <input type="password" formControlName="password" placeholder="Enter your Password">
+    </label>
+      <p class="error" *ngIf="regForm.get('password').hasError('required')">Enter Password</p>
+  </div>
+
+
+  <button type="submit" [disabled]="regForm.invalid"> Submit</button>
+</form>
+

@@ -1,0 +1,33 @@
+
+<form
+      [ngClass]=
+        "['form'
+        ,isCorrect ? 'correct' : ''
+        ,logForm.invalid ? 'red' : '']"
+      [formGroup]="logForm"
+      (ngSubmit)="logIn()"><span class="title">LogIN :</span>
+
+  <div class="inp">
+    <label> <span class="span">Email:</span>
+      <input formControlName="email" placeholder="Enter your Email">
+    </label>
+    <p class="error" *ngIf="logForm.get('email').hasError('required')">Enter Email</p>
+  </div>
+
+  <div class="inp">
+    <label> <span class="span">Password:</span>
+      <input type="password" formControlName="password" placeholder="Enter your Password">
+    </label>
+    <p class="error" *ngIf="logForm.get('password').hasError('required')">Enter Password</p>
+  </div>
+
+
+  <button type="submit" [disabled]="logForm.invalid"> Submit</button>
+</form>
+
+<div *ngIf="isCorrect" [ngClass]="['form','correct']">
+  {{message}}
+</div>
+
+
+
